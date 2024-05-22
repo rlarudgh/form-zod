@@ -1,5 +1,7 @@
+import { Home } from "@/pages";
+
 function App() {
-  return <>Hello React + Vite</>;
+  return <Home />;
 }
 
 export default App;
