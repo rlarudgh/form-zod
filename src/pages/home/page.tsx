@@ -1,6 +1,7 @@
 import { useForm } from "@/shared/hooks/useForm";
 import { Input } from "@/shared/ui";
 import { RegisterType } from "@/shared/models";
+import { registerSchema } from "@/shared/libs";
 
 export const Home = () => {
   const { formState, handleChange, handleSubmit } = useForm<RegisterType>({
@@ -14,7 +15,7 @@ export const Home = () => {
   return (
     <form
       style={{ display: "flex", flexDirection: "column", width: "200px" }}
-      onSubmit={handleSubmit}
+      onSubmit={(e) => handleSubmit(e, registerSchema)}
     >
       <Input
         value={formState.email}

@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { z } from "zod";
 
 export const useForm = <T>(initial: T) => {
   const [formState, setFormState] = useState<T>(initial);
@@ -11,7 +12,9 @@ export const useForm = <T>(initial: T) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = <T extends z.ZodRawShape>(e: FormEvent<HTMLFormElement>, schema: T extends z.ZodEffects<z.ZodObject<T, any, any>>) => {
+    console.log(e, schema);
+  };
 
   return { formState, handleChange, handleSubmit };
 };
